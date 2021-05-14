@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 
+@Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @Table(name = "orders")
@@ -30,7 +31,7 @@ public class Order extends AbstractEntity<Long>{
     @Enumerated(EnumType.STRING)
     private PaymentType paymentType = PaymentType.CREDIT_CARD;
 
-    @Column
+
     @ManyToOne
     private Client client;
 

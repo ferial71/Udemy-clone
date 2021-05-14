@@ -3,13 +3,11 @@ package com.ustudy.ustudy.model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import javax.persistence.Column;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 @Table(name = "courses")
@@ -31,13 +29,14 @@ public class Course extends AbstractEntity<Long>{
     private int ratingCount;
 
     @Column
+    @ManyToMany
     private Set<Language> languages = new HashSet<>();
 
-    @Column
-    private Set<String> learningGoals = new HashSet<>();
+//    @Column
+//    private Set<String> learningGoals = new HashSet<>();
 
-    @Column
-    private Set<String> requirements = new HashSet<>();
+//    @Column
+//    private Set<String> requirements = new HashSet<>();
 
     @Column
     private String description;
@@ -67,7 +66,7 @@ public class Course extends AbstractEntity<Long>{
     private Set<Video> videos = new HashSet<>();
 
     @Column
-    @OneToMany(mappedBy = "course")
+    @ManyToMany
     private Set<Promotion> promotions = new HashSet<>();
 
 }

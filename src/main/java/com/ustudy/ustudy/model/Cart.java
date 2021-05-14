@@ -7,15 +7,15 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
 @Data
-@Table(name = "cart")
+@Table(name = "carts")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
 public class Cart extends AbstractEntity<Long>{
 
     @Column
     private int quantity;
 
-    @Column
     @ManyToOne
     @JoinColumn(name = "client_id")
     private Client client;
